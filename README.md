@@ -13,11 +13,11 @@ Install R - http://www.R-project.org/
 
 ### Example
 If you downloaded the source code in ~/test directory
->cd test
->R -e "shiny::runApp('council-services')"
-…
+* >cd test
+* >R -e "shiny::runApp('council-services')"
+* …
 Listening on http://127.0.0.1:3006
-To run the viz type the url http://127.0.0.1:3006 into your browser
+* To run the viz type the url http://127.0.0.1:3006 into your browser
 
 ## Built With
 
