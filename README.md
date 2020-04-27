@@ -11,18 +11,23 @@ Install R - http://www.R-project.org/
 3. Execute R -e "shiny::runApp('council-services')" The console will load the app and eventually display: “Listening on http://ip-address:port” 
 4. To view and explore the viz using a standard browser connect to the running application by navigating your browser to the specified address.
 
-### Example
+```
 If you downloaded the source code in ~/test directory
 * >cd test
 * >R -e "shiny::runApp('council-services')"
 * …
 Listening on http://127.0.0.1:3006
 * To run the viz type the url http://127.0.0.1:3006 into your browser
+```
 
 ## Built With
 
 * [Shiny](http://shiny.rstudio.com) - The web app framework for R
-* [shinyWidgets](https://rdrr.io/cran/shinyWidgets/) -
+* [shinyWidgets](https://rdrr.io/cran/shinyWidgets/) 
 * [DataTables library](https://rstudio.github.io/DT/) 
 * [Plotly](https://rdrr.io/cran/plotly/)
 * [Themes for Shiny](http://rstudio.github.io/shinythemes/)
+
+## Authors
+
+* **Irina Lumsden** - *Initial work* 
