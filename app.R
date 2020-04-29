@@ -280,22 +280,21 @@ server <- function(input, output, session) {
       scale_y_continuous(trans = 'log2') + #log scale to display small % of requests properly
       coord_flip() +
       ylab("Proportion in %") +
-      xlab(" ") +
+      xlab("Service Description") +
       scale_fill_brewer(palette = "Set2") +
       theme (
         panel.background = element_rect (fill = 'grey'),
         panel.grid.major = element_line (colour = 'grey90', size = 0.20),
         panel.grid.minor = element_line (colour = 'grey90', size = 0.10),
         plot.title = element_text (lineheight = 1.15, hjust = -10),
-        axis.title.y = element_text (angle = 90),
-        axis.text.x = element_text(angle = 90, hjust = 1),
-        axis.title = element_text (size = 12),
-        text = element_text (size = 14),
-        legend.title = element_blank(),
+        axis.title.x = element_text (angle = 0,size = 12),
+        axis.text.x = element_text(angle = 0, hjust = 1),
+        text = element_text (size = 12),
         strip.text.x = element_text (size = 10,
                                      angle = 5),
         legend.position = c(0.9, 0.2)
       ) +
+      labs(fill = "Service category", font.main = 12)+
       labs(
         title = paste("% of requests per service description for ",
                       input$year),
@@ -366,6 +365,7 @@ server <- function(input, output, session) {
       coord_flip() +
       ylab("") +
       xlab("") +
+      labs(fill = "Service category", font.main = 12)+
       scale_fill_brewer(palette = "Set2") +
       theme (
         panel.background = element_rect (fill = 'grey'),
@@ -376,10 +376,10 @@ server <- function(input, output, session) {
         axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title = element_text (size = 12),
         text = element_text (size = 14),
-        legend.title = element_blank(),
         strip.text.x = element_text (size = 10,
                                      angle = 8),
-        legend.position = c(0.9, 0.2)
+        legend.position = c(0.9, 0.2),
+        legend.title = element_text("")
       ) +
       facet_grid( ~ suburb, scales = "free", space = "free") +
       labs(
@@ -447,6 +447,9 @@ server <- function(input, output, session) {
       ) +
       geom_point(alpha = 0.5, shape = 21) +
       scale_fill_brewer(palette = "Set2") +
+      ylab(" ") +
+      xlab(" ") +
+      labs(size = "",fill = "Service category", font.main = 12)+
       theme (
         panel.background = element_rect (fill = 'light grey'),
         panel.grid.major = element_line (colour = 'grey90', size = 0.20),
@@ -456,7 +459,7 @@ server <- function(input, output, session) {
         axis.title = element_text (size = 12),
         text = element_text (size = 14),
         axis.text.x = element_text(angle = 90, hjust = 1),
-        legend.title = element_blank(),
+        # legend.title = element_blank(),
         legend.text = element_text(colour = "black", size =
                                      12),
         legend.position = "bottom",
@@ -476,9 +479,7 @@ server <- function(input, output, session) {
         height = "auto",
         res = 72,
         scrollable = TRUE
-      ) +
-      ylab(" ") +
-      xlab(" ")
+      )
     print(ggplotly(p, tooltip = "text"))
   })
   #request servicing panel: heading
@@ -555,7 +556,7 @@ server <- function(input, output, session) {
         panel.grid.minor = element_line (colour = 'grey90', size = 0.10),
         axis.title = element_text (size = 12),
         text = element_text (size = 14),
-        legend.title = element_blank(),
+        #legend.title = element_blank(),
         legend.text = element_text(colour = "black", size =
                                      12),
         legend.position = "bottom",
@@ -563,6 +564,7 @@ server <- function(input, output, session) {
         strip.text = element_text (size = 12, angle = 90),
         legend.justification = c(1, 0)
       ) +
+      labs(shape = "Suburb",color = "Service category", font.main = 12)+
       labs(
         title = paste(
           "Response time versus number of requests from 1 Jan to 15 Oct ",
@@ -570,8 +572,6 @@ server <- function(input, output, session) {
         ),
         y = "Median Response Time (in days)",
         x = "Number of Requests",
-        color = "Numbers for",
-        shape = "Service Description:",
         font.main = 20,
         width = "auto",
         height = "auto",
